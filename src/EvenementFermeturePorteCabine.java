@@ -18,8 +18,7 @@ public class EvenementFermeturePorteCabine extends Evenement {
 	Cabine cabine = immeuble.cabine;
 	assert cabine.porteOuverte : "précondition";
 
-	//cabine.porteOuverte = false;
-	notYetImplemented();
+	cabine.porteOuverte = false;
 
 	assert (! cabine.porteOuverte) : "postcondition";
     }
