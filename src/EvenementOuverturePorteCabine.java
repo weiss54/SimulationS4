@@ -15,9 +15,11 @@ public class EvenementOuverturePorteCabine extends Evenement {
 	Cabine cabine = immeuble.cabine;
 	Etage étage = cabine.étage;
 	assert ! cabine.porteOuverte;
-	
-	notYetImplemented();
-	
+
+	cabine.porteOuverte = true;
+	int res = cabine.faireDescendrePassagers(immeuble, date);
+	if(cabine.cabineEstVide() && !immeuble.passagerAuDessus(étage) && !immeuble.passagerEnDessous(étage))
+		cabine.changerIntention('-');
 	assert cabine.porteOuverte;
     }
 

@@ -112,4 +112,14 @@ public class Cabine extends Global {
 	return false;
     }
 
+
+	public boolean cabineEstVide() {
+		for(int i =0;i<this.tableauPassager.length;i++){
+			if(this.tableauPassager[i] != null)
+				return false;
+		}
+		return true;
+	}
+
+
 }

@@ -35,13 +35,15 @@ public class EvenementArriveePassagerPalier extends Evenement {
                 } else {
                     assert false : "else impossible";
                 }
-                ;
+                this.date = étage.arrivéeSuivante()+date;
+                echeancier.ajouter(this);
             } else {
                 notYetImplemented();
             }
             ;
         } else {
-            notYetImplemented();
+            if(c.étage == étage) notYetImplemented();
+            else notYetImplemented();
         }
 
         assert c.intention() != '-' : "intention impossible";
