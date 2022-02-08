@@ -15,7 +15,10 @@ public class EvenementPietonArrivePalier extends Evenement {
     
     
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
-	notYetImplemented();
+        if (passager.étageDépart()==étage) {
+           notYetImplemented(); // cas ou il monte l'escalier
+        }
+        notYetImplemented();
     }
 
     public EvenementPietonArrivePalier(long d, Etage edd, Passager pa) {

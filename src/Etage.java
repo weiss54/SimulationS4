@@ -118,4 +118,28 @@ public class Etage extends Global {
 	return (!passagers.isEmpty());
     }
 
+	public Passager enleverProchainPassager() {
+		Passager p = this.passagers.get(0);
+		this.passagers.remove(0);
+		return p;
+	}
+	public Passager enleverProchainPassagerQuiMontent() {
+		for(Passager p : passagers){
+			if ( p.sens() == '^' ) {
+				return p;
+			}
+		}
+		new Error("Impossible si on test au préalable que quelqu'un veut monter");
+		return null;
+	}
+	public Passager enleverProchainPassagerQuiDescendent() {
+		for(Passager p : passagers){
+			if ( p.sens() == 'v' ) {
+				return p;
+			}
+		}
+		new Error("Impossible si on test au préalable que quelqu'un veut descendre");
+		return null;
+	}
+
 }

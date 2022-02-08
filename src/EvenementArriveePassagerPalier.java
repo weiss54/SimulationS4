@@ -35,16 +35,24 @@ public class EvenementArriveePassagerPalier extends Evenement {
                 } else {
                     assert false : "else impossible";
                 }
-                this.date = étage.arrivéeSuivante()+date;
-                echeancier.ajouter(this);
             } else {
                 notYetImplemented();
             }
             ;
         } else {
-            if(c.étage == étage) notYetImplemented();
-            else notYetImplemented();
+            // Vue que la cabine n'est pas là, le passager s'ajoute à l'étage
+            étage.ajouter(p);
+            // dans le cas ou la cabine est vide et sans intention, le passager l'appel
+            if (c.cabineEstVide() && c.intention()=='-') {
+                c.changerIntention((p.étageDestination().numéro() > p.étageDépart().numéro() ? 'v' : '^'));
+                echeancier.ajouter(new EvenementFermeturePorteCabine(date+Global.tempsPourOuvrirOuFermerLesPortes));
+            }
+            // on ajouter a l'echancier le PAP
+            echeancier.ajouter(new EvenementPietonArrivePalier(date+Global.délaiDePatienceAvantSportif, p.étageDépart(), p));
         }
+        // cas général on ajoute un APP pour le meme etage mais pas a la meme date
+        this.date = étage.arrivéeSuivante()+date;
+        echeancier.ajouter(this);
 
         assert c.intention() != '-' : "intention impossible";
     }
